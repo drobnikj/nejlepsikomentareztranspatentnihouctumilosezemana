@@ -14,7 +14,7 @@ Template.main.onCreated(() => {
 
 Template.main.helpers({
     posts() {
-        return Posts.find({});
+        return Posts.find({}, {sort: {likes: -1}});
     },
 });
 
@@ -25,7 +25,7 @@ Template.main.events({
       const id = $(event.currentTarget).attr('id');
       console.log(id);
       Meteor.call('like', id, (data) => {
-          console.log("ZEMAN: dan "+data);
-      })
+          console.log("ZEMAN: majby dan");
+      });
   },
 });
