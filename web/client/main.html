@@ -37,9 +37,11 @@
       <table class="table table-striped" style="table-layout: fixed">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Comment</th>
-          <th>Value</th>
+          <th>Přispěl</th>
+          <th>Okomentoval</th>
+          <th>Částka</th>
+          <th>Líbí se</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -48,6 +50,8 @@
           <td>{{donator}}</td>
           <td class="word-wrap:break-word">{{message}}</td>
           <td>{{value}}</td>
+          <td>{{likes}}</td>
+          <td><button class="like" id="{{uniqueKey}}">Like</button></td>
         </tr>
         {{else}}
         ZEMAN: nou resalt

@@ -9,14 +9,35 @@ Meteor.startup(() => {
 });
 
 Meteor.publish('posts', () => {
-    return Posts.find({});
+    return Posts.find({}, {sort: {likes: -1}});
+});
+
+Meteor.methods({
+    'like'(uniqueKey) {
+        console.log("like "+uniqueKey);
+        const ip = this.connection.clientAddress;
+        console.log(new Date(new Date() - 24*60*60*1000));
+        const lastLikes = Posts.find({ uniqueKey, "likesBy.ip": ip, "likesBy.date": { $gte: new Date(new Date() - 24*60*60*1000)} } );
+        if (lastLikes.count()) {
+            console.log("kundo!");
+            return 'kundo';
+        }
+        return Posts.update({ uniqueKey }, {
+            $inc: { likes: 1 },
+            $push: { likesBy: {
+                ip: this.connection.clientAddress,
+                date: new Date(),
+            } }
+
+        });
+    }
 });
 
 const importPosts = (_id) => {
     const apifyCient = new ApifyClient({});
     const crawlerExecution = Meteor.wrapAsync(apifyCient.crawlers.getExecutionDetails)({ executionId: _id} );
 
-    if (crawlerExecution.actId !== 'n7ohHth6eBsiHJhtD') {
+    if (crawlerExecution.actId !== Meteor.settings.actId) {
         console.log(`ZEMAN: Bet kravler ajdy ${crawlerExecution.actId} :(`);
         return;
     }
@@ -33,7 +54,6 @@ const importPosts = (_id) => {
 JsonRoutes.add("post", "/import", function (req, res, next) {
     const _id = req.body._id;
     if (!_id) return 'Kundo';
-    console.log(_id);
     Meteor.setTimeout(() => importPosts(_id), 0);
     JsonRoutes.sendResult(res, {
         state: 'ZEMAN: Mejby importet ;)',

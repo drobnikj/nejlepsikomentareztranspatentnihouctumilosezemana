@@ -17,8 +17,13 @@ Template.main.helpers({
 });
 
 Template.main.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+  'click .like'(event, instance) {
+      event.preventDefault();
+      // increment the counter when button is clicked
+      const id = $(event.currentTarget).attr('id');
+      console.log(id);
+      Meteor.call('like', id, (data) => {
+          console.log("ZEMAN: dan "+data);
+      })
   },
 });
