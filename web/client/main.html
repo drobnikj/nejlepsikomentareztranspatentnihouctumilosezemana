@@ -32,23 +32,27 @@
 
 
 <template name="main">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
-      </tr>
-    </thead>
-    {{#each posts}}
-      <tr>
-        <td>{{donator}}</td>
-        <td>{{comment}}</td>
-        <td>{{value}}</td>
-      </tr>
-    {{else}}
-      ZEMAN: nou resalt
-    {{/each}}
-  </table>
+
+    <div class="table-responsive">
+      <table class="table table-striped" style="table-layout: fixed">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Comment</th>
+          <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each posts}}
+        <tr>
+          <td>{{donator}}</td>
+          <td class="word-wrap:break-word">{{message}}</td>
+          <td>{{value}}</td>
+        </tr>
+        {{else}}
+        ZEMAN: nou resalt
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
 </template>
