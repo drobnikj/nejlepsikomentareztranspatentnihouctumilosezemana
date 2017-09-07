@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import ApifyClient from 'apify-client';
 import { Posts } from '../both/db';
-import './db';
+import '../both/db';
 
 
 
