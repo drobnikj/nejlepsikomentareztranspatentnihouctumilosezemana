@@ -3,6 +3,8 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 import { Posts } from '../both/db';
 
+GAnalytics.pageview();
+
 Template.main.onCreated(() => {
     const template = Template.instance();
     template.autorun(() => {
