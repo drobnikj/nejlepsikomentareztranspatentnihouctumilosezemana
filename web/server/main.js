@@ -1,11 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import ApifyClient from 'apify-client';
 import { Posts } from '../both/db';
+import './db';
 
 
 
 Meteor.startup(() => {
-  // code to run on server at startup
+    // code to run on server at startup
+    Posts._ensureIndex({ "uniqueKey": 1, "likes": -1 });
+    Posts._ensureIndex({ "likesBy.ip": 1, "likesBy.date": 1 });
 });
 
 Meteor.publish('posts', () => {
