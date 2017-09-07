@@ -10,26 +10,18 @@
 </head>
 
 <body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-brand">
-        <div class="row">
-          <p class="navbar-nav">Nejlepší komentáře z transparentního účtu Miloše Zemana..</p>
-          <p class="navbar-right">  //..<a href="https://www.apifier.com">Povered by Apifier</a> ..//..<a href="https://www.apifier.com/community/crawlers/VaclavRut/n7ohH-api-nejlepsikomentareztranspatentnihouctumilosezemana">Crawler</a> ..//..<a href="https://github.com/drobnikj/nejlepsikomentareztranspatentnihouctumilosezemana"> GitHub</a></p>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="nav navbar-nav">
+          <a class="navbar-brand">Nejlepší komentáře z transparentního účtu Miloše Zemana..</a>
         </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
+        <ul class="nav navbar-nav navbar-right">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+  </nav>
+</div>
 <div class="container">
     {{>main}}
 </div><!-- /.container -->
@@ -39,7 +31,7 @@
 <template name="main">
 
     <div class="table-responsive">
-      <table class="table table-striped" style="table-layout: fixed">
+      <table class="table  table-striped">
         <thead>
         <tr>
           <th>Přispěl</th>
@@ -52,10 +44,10 @@
         <tbody>
         {{#each posts}}
         <tr>
-          <td>{{donator}}</td>
+          <td class="word-wrap:break-word">{{donator}}</td>
           <td class="word-wrap:break-word">{{message}}</td>
-          <td>{{value}}</td>
-          <td>{{likes}}</td>
+          <td class="word-wrap:break-word">{{value}}</td>
+          <td class="word-wrap:break-word">{{likes}}</td>
           <td><button type="button" class="btn btn-primary like" id="{{uniqueKey}}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Líbí se</button></td>
         </tr>
         {{else}}
