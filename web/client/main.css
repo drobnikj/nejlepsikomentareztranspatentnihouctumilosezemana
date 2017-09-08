@@ -5,3 +5,22 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+
+table td {
+    word-break: break-word;
+}
+/*
+.text-table {
+    word-wrap: break-word;
+    max-width: 0;
+    overflow: hidden;
+}
+
+.like{
+    white-space: nowrap;
+}
+
+.likes-button{
+    white-space: nowrap;
+}
+*/
