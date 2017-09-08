@@ -28,7 +28,7 @@ Meteor.methods({
         return Posts.update({ uniqueKey }, {
             $inc: { likes: 1 },
             $push: { likesBy: {
-                ip: this.connection.clientAddress,
+                ip: ip,
                 date: new Date(),
             } }
 
