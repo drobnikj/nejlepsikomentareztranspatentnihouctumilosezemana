@@ -9,6 +9,7 @@ Meteor.startup(() => {
     // code to run on server at startup
     Posts._ensureIndex({ "uniqueKey": 1, "likes": -1 });
     Posts._ensureIndex({ "likesBy.ip": 1, "likesBy.date": 1 });
+    Posts._ensureIndex({ "donator": 1, "message": 1 });
 });
 
 Meteor.publish('posts', () => {

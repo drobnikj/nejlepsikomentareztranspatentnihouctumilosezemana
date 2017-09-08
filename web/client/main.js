@@ -4,6 +4,7 @@ import './main.html';
 import './main.css';
 import { Posts } from '../both/db';
 import { Session } from 'meteor/session';
+import _ from 'underscore';
 
 GAnalytics.pageview();
 
@@ -42,6 +43,15 @@ Template.main.helpers({
     },
 });
 
+const updateQuery = (evn) => {
+    if(evn.currentTarget.value.length >= 3){
+        Session.set("search-query", evt.currentTarget.value);
+    }else{
+        Session.set("search-query", null);
+    }
+};
+
+const updateQueryDebounced = _.debounce(updateQuery, 500, false);
 
 Template.main.events({
     'click .like'(event, instance) {
@@ -54,10 +64,6 @@ Template.main.events({
         });
     },
     'keyup input.search-query': function (evt) {
-        if(evt.currentTarget.value.length >= 3){
-            Session.set("search-query", evt.currentTarget.value);
-        }else{
-            Session.set("search-query", null);
-        }
+        updateQueryDebounced(evt)
     },
 });
