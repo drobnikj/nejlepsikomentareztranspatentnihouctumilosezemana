@@ -5,7 +5,7 @@ import './main.css';
 import { Posts } from '../both/db';
 
 GAnalytics.pageview();
-const PAGE_LIMIT = 100;
+const PAGE_LIMIT = 150;
 
 Template.main.onCreated(() => {
     const template = Template.instance();
@@ -46,9 +46,6 @@ Template.main.helpers({
     loading() {
         return Template.instance().loading.get();
     },
-    isLoadNextRow(index) {
-        return (index+1) % 50 === 0
-    }
 });
 
 Template.main.events({
