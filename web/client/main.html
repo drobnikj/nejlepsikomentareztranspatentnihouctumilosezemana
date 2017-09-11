@@ -61,11 +61,9 @@
           <td class="likes">{{likes}}</td>
           <td class="likes-button"><button type="button" class="btn btn-primary like" id="{{uniqueKey}}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Líbí se</button></td>
         </tr>
-
-        {{else}}
-          Načítám...
         {{/each}}
         </tbody>
       </table>
+      <div id="last-element">{{#if loading}}Načítám...{{/if}}</div>
     </div>
 </template>

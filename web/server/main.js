@@ -11,8 +11,8 @@ Meteor.startup(() => {
     Posts._ensureIndex({ "likesBy.ip": 1, "likesBy.date": 1 });
 });
 
-Meteor.publish('posts', () => {
-    return Posts.find({}, {sort: {likes: -1}});
+Meteor.publish('posts', (limit) => {
+    return Posts.find({}, {sort: {likes: -1}, limit: limit});
 });
 
 Meteor.methods({
@@ -33,6 +33,9 @@ Meteor.methods({
             } }
 
         });
+    },
+    'postsCount'() {
+        return Posts.find({}).count()
     }
 });
 
