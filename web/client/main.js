@@ -19,7 +19,7 @@ Template.main.onCreated(() => {
 
     // Infinite scroll
     $(window).scroll(function () {
-        const target = $("#last-element");
+        const target = $(".start-load-element");
         if (!target.length) return;
         const rect = target[0].getBoundingClientRect();
         if (rect.top >= 0 &&
@@ -46,6 +46,9 @@ Template.main.helpers({
     loading() {
         return Template.instance().loading.get();
     },
+    isLoadNextRow(index) {
+        return (index+1) % 50 === 0
+    }
 });
 
 Template.main.events({

@@ -54,7 +54,7 @@
             </div>
 
         -->
-        <tr>
+        <tr class="{{#if (isLoadNextRow @index)}}start-load-element{{/if}}">
           <td class="text-table">{{donator}}</td>
           <td class="text-table">{{message}}</td>
           <td class="price">{{value}}</td>
@@ -64,6 +64,6 @@
         {{/each}}
         </tbody>
       </table>
-      <div id="last-element">{{#if loading}}Načítám...{{/if}}</div>
+      <div id="last-element" class="start-load-element">{{#if loading}}Načítám...{{/if}}</div>
     </div>
 </template>
