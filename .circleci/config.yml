@@ -25,10 +25,10 @@ jobs:
 
     steps:
       - add_ssh_keys
-        fingerprints:
-          - "65:a9:3b:26:61:92:fb:41:89:59:ef:df:2d:02:67:45"
 
       - checkout
+
+      - run: echo '65:a9:3b:26:61:92:fb:41:89:59:ef:df:2d:02:67:45' >> ~/.ssh/known_hosts
 
       - run: git remote add production dokku@drobnik.cloud:nkztumz
 
