@@ -24,6 +24,7 @@ jobs:
     working_directory: ~/nejlepsikomentareztranspatentnihouctumilosezemana
 
     steps:
+      - add_ssh_keys
       - checkout
 
       - run: git remote add production dokku@drobnik.cloud:nkztumz
